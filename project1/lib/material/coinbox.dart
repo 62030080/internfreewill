@@ -23,6 +23,7 @@ class CoinBox extends StatelessWidget {
           Expanded(
             child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 cname,
@@ -42,15 +43,14 @@ class CoinBox extends StatelessWidget {
           ),
           ),
 
-          Expanded(child:SizedBox(
-              width: 50,
-              height: 50,
+          SizedBox(
+              width: 100,
+              height: 100,
               child: CheckImg(
                 aimg: cimage,
               ))
               // Image(
-              //   image: NetworkImage(cimage),width: 100,height: 50,))
-            ,)
+              //   image: NetworkImage(cimage),width: 100,height: 50,)
           ],
       ),
     );

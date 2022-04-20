@@ -34,8 +34,8 @@ class _CheckImgStfState extends State<CheckImgStf> {
         child:  Padding(
           padding: const EdgeInsets.all(8.0),
           child:  SvgPicture.network("${widget.checksuccessimg}",
-            width: 50,
-            height: 50,
+            width: 150,
+            height: 150,
           ),
         ),
       );
