@@ -82,6 +82,7 @@ class _MainBodySTFState extends State<MainBodySTF> {
                                       volume_c: "${result.data.coins[index].hVolume}",
                                       rank_c: "${result.data.coins[index].rank}",
                                       index_c: "${index}",
+                                      color_c: "${result.data.coins[index].color}",
                                 )
                             ));
                           },

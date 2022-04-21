@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
@@ -12,14 +13,14 @@ class CoinGraph extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CoinGraphStf(
-      indexGragh: index,
+      index_g: index,
     );
   }
 }
 
 class CoinGraphStf extends StatefulWidget {
-  final String indexGragh;
-  const CoinGraphStf({Key? key, required this.indexGragh}) : super(key: key);
+  final String index_g;
+  const CoinGraphStf({Key? key, required this.index_g}) : super(key: key);
 
   @override
   State<CoinGraphStf> createState() => _CoinGraphStfState();
@@ -36,7 +37,7 @@ class _CoinGraphStfState extends State<CoinGraphStf> {
     getCoinRankForGraph();
   }
   Future <CoinDataApi> getCoinRankForGraph() async {
-    print("เรียกใช้ Get_Coin_price");
+    print("เรียกใช้ getCoinRankForGraph");
     var url = Uri.parse("https://api.coinranking.com/v2/coins?");
     var response = await http.get(url, headers: <String, String>{
       'x-access-token':
@@ -48,6 +49,10 @@ class _CoinGraphStfState extends State<CoinGraphStf> {
 
   @override
   Widget build(BuildContext context) {
+    String color_cc = widget.index_g??'#ffffff';
+    if(widget.index_g == 'null'){
+      color_cc = '#ffffff';
+    }
     return Scaffold(
 
       body: FutureBuilder(
@@ -59,22 +64,20 @@ class _CoinGraphStfState extends State<CoinGraphStf> {
               margin: const EdgeInsets.all(3),
               elevation: 1,
               child: InkWell(
-                child: Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    //Initialize the spark charts widget
-                    child: SfSparkAreaChart.custom(
-                      //Enable the trackball
-                      trackball: SparkChartTrackball(
-                          activationMode: SparkChartActivationMode.tap),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  //Initialize the spark charts widget
+                  child: SfSparkAreaChart.custom(
+                    //Enable the trackball
+                    trackball: SparkChartTrackball(
+                        activationMode: SparkChartActivationMode.tap),
 
-                      color: Colors.lightBlueAccent,
-                      xValueMapper: (int index2) => index2 ,
-                      yValueMapper: (int index2) => double.parse( result.data.coins[ int.parse( widget.indexGragh )].sparkline[index2]) ,
-                      dataCount: result.data.coins[int.parse( widget.indexGragh )].sparkline.length,
+                    color: HexColor("${result.data.coins[int.parse( color_cc )].color}"),
+                    xValueMapper: (int index2) => index2 ,
+                    yValueMapper: (int index2) => double.parse( result.data.coins[ int.parse( widget.index_g )].sparkline[index2]) ,
+                    dataCount: result.data.coins[int.parse( widget.index_g )].sparkline.length,
 
 
-                    ),
                   ),
                 ),
 
