@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2_coinapi/material/coingraph.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
-
 import '../material/checkimg.dart';
+
 
 class CoinDataPageStl extends StatelessWidget {
   final String?
@@ -62,14 +62,16 @@ class CoinDataPageStf extends StatefulWidget {
 class _CoinDataPageStfState extends State<CoinDataPageStf> {
   @override
   Widget build(BuildContext context) {
-    print(widget.color_c??'#ffffff');
-    String color_cc = widget.color_c??'#ffffff';
+    // print(widget.color_c);
+    // print(widget.color_c??'#000000');
+    String color_cc = widget.color_c??'';
     if(widget.color_c == 'null'){
-      color_cc = '#ffffff';
+      color_cc = '#949494';
     }
     return Scaffold(
       backgroundColor: HexColor(color_cc),
       appBar: AppBar(
+        backgroundColor: HexColor(color_cc),
         title: Text('CoinDataPage'),
       ),
       body: SingleChildScrollView(
@@ -77,31 +79,37 @@ class _CoinDataPageStfState extends State<CoinDataPageStf> {
           children: [
             Center(child: Text(
               widget.symbol_c??'', style: TextStyle(
-                fontSize: 60,fontWeight: FontWeight.bold,color: Colors.yellow))),
-            CheckImg(aimg: widget.icon_c??'',),
+                fontSize: 60,fontWeight: FontWeight.bold,color: Colors.black))),
+            Container(
+              height: 300,
+              width: 300,
+              child: CheckImg(aimg: widget.icon_c??'',
+                        symcheck: widget.symbol_c??''
+              ),
+            ),
             Text("Volume = " +
                 '${NumberFormat("#,###.####").format(double.parse(widget.volume_c??'0'))}' + " " + "หน่วย", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.yellow)),
+                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
             Text("Price = " +
               '${NumberFormat("#,###.######").format(double.parse(widget.price_c??'0'))}' + " " + "usd", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.yellow)),
+                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
             Text("MarketCap = " +
                 '${NumberFormat("#,###.####").format(double.parse(widget.marketCap_c??'0'))}' + " " + "usd", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.yellow)),
+                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
             Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.yellow)),
-            Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.yellow)),
-            Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.yellow)),
-            Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.yellow)),
-            Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.yellow)),
+                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
+            // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
+            //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
+            // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
+            //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
+            // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
+            //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
+            // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
+            //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
             Container(
               height: 200,
               width: 500,
-                child: CoinGraph(index: widget.index_c??'',)
+                child: CoinGraph(index: widget.index_c??'',color: widget.color_c??'')
             ),
           ],
         ),

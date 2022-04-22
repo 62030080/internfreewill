@@ -4,12 +4,13 @@ import 'package:intl/intl.dart';
 import 'checkimg.dart';
 
 class CoinBox extends StatelessWidget {
+  String symbol_cb;
   String cname; //ชื่อเหรียญ
   double cprice; //ราคาเหรียญ
   String cimage; //รูปเหรียญ
   Color color; //สีกล่อง
   double size; //ขนาดกล่อง
-  CoinBox(this.cname, this.cprice, this.cimage, this.color, this.size);
+  CoinBox(this.symbol_cb ,this.cname, this.cprice, this.cimage, this.color, this.size);
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +49,7 @@ class CoinBox extends StatelessWidget {
               height: 100,
               child: CheckImg(
                 aimg: cimage,
+                symcheck: symbol_cb,
               ))
               // Image(
               //   image: NetworkImage(cimage),width: 100,height: 50,)

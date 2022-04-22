@@ -31,7 +31,18 @@ class _MainBodySTFState extends State<MainBodySTF> {
     super.initState();
     print('เรียกใช้ initState');
     getCoinRank();
+    // setUpTimedFetch();
   }
+
+  // setUpTimedFetch() {
+  //   Timer.periodic(Duration(seconds: 5), (timer) {
+  //     // Timer.periodic(Duration(milliseconds: 50000), (timer) {
+  //     setState(() {
+  //       getCoinRank(); // เชื่อม APi
+  //     });
+  //   });
+  // }
+
   Future <CoinDataApi> getCoinRank() async {
     print("เรียกใช้ Get_Coin_price");
     var url = Uri.parse("https://api.coinranking.com/v2/coins?");
@@ -87,6 +98,7 @@ class _MainBodySTFState extends State<MainBodySTF> {
                             ));
                           },
                           child: CoinBox(
+                              "${result.data.coins[index].symbol}",
                               "${result.data.coins[index].symbol}",
                               double.parse('${result.data.coins[index].price}'),
                               "${result.data.coins[index].iconUrl}",

@@ -7,20 +7,21 @@ import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import 'coinDataAPI.dart';
 
 class CoinGraph extends StatelessWidget {
-  final String index;
-  const CoinGraph ({Key? key, required this.index}) : super(key: key);
+  final String color, index;
+  const CoinGraph ({Key? key, required this.index, required this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CoinGraphStf(
       index_g: index,
+      color_g: color
     );
   }
 }
 
 class CoinGraphStf extends StatefulWidget {
-  final String index_g;
-  const CoinGraphStf({Key? key, required this.index_g}) : super(key: key);
+  final String index_g, color_g;
+  const CoinGraphStf({Key? key, required this.index_g, required this.color_g}) : super(key: key);
 
   @override
   State<CoinGraphStf> createState() => _CoinGraphStfState();
@@ -49,9 +50,10 @@ class _CoinGraphStfState extends State<CoinGraphStf> {
 
   @override
   Widget build(BuildContext context) {
-    String color_cc = widget.index_g??'#ffffff';
-    if(widget.index_g == 'null'){
-      color_cc = '#ffffff';
+    String color_gg = widget.color_g;
+    print(color_gg);
+    if(widget.color_g == 'null'){
+      color_gg = '#949494';
     }
     return Scaffold(
 
@@ -72,7 +74,7 @@ class _CoinGraphStfState extends State<CoinGraphStf> {
                     trackball: SparkChartTrackball(
                         activationMode: SparkChartActivationMode.tap),
 
-                    color: HexColor("${result.data.coins[int.parse( color_cc )].color}"),
+                    color: HexColor(color_gg),
                     xValueMapper: (int index2) => index2 ,
                     yValueMapper: (int index2) => double.parse( result.data.coins[ int.parse( widget.index_g )].sparkline[index2]) ,
                     dataCount: result.data.coins[int.parse( widget.index_g )].sparkline.length,
