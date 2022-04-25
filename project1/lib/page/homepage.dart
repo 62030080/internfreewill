@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2_coinapi/material/homebody.dart';
+import 'package:flutter_application_2_coinapi/page/homebody.dart';
 import 'package:flutter_application_2_coinapi/page/buypage.dart';
 import 'package:flutter_application_2_coinapi/page/favoritecoinpage.dart';
 import 'package:flutter_application_2_coinapi/page/settingpage.dart';

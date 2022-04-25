@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2_coinapi/page/coindatapage.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/web_socket_channel.dart';
-import '../page/coindatapage.dart';
-import 'coinDataAPI.dart';
-import 'coinbox.dart';
+import 'coindatapage.dart';
+import '../material/coinDataAPI.dart';
+import '../material/coinbox.dart';
 
 class MainBodyStl extends StatelessWidget {
   const MainBodyStl({Key? key}) : super(key: key);

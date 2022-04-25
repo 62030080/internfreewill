@@ -65,21 +65,29 @@ class _CoinDataPageStfState extends State<CoinDataPageStf> {
     // print(widget.color_c);
     // print(widget.color_c??'#000000');
     String color_cc = widget.color_c??'';
+    String text_color = '#000000';
     if(widget.color_c == 'null'){
       color_cc = '#949494';
+      text_color = '#ffffff';
+    }
+    if (widget.color_c == '#000000' || widget.color_c == '#3C3C3D' || widget.color_c == '#f7931A'){
+      text_color = '#ffffff';
     }
     return Scaffold(
       backgroundColor: HexColor(color_cc),
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: HexColor(text_color)
+        ),
         backgroundColor: HexColor(color_cc),
-        title: Text('CoinDataPage'),
+        title: Text('CoinDataPage',style: TextStyle(color: HexColor(text_color)),),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Center(child: Text(
               widget.symbol_c??'', style: TextStyle(
-                fontSize: 60,fontWeight: FontWeight.bold,color: Colors.black))),
+                fontSize: 60,fontWeight: FontWeight.bold,color: HexColor(text_color)))),
             Container(
               height: 300,
               width: 300,
@@ -87,29 +95,33 @@ class _CoinDataPageStfState extends State<CoinDataPageStf> {
                         symcheck: widget.symbol_c??''
               ),
             ),
-            Text("Volume = " +
-                '${NumberFormat("#,###.####").format(double.parse(widget.volume_c??'0'))}' + " " + "หน่วย", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
-            Text("Price = " +
-              '${NumberFormat("#,###.######").format(double.parse(widget.price_c??'0'))}' + " " + "usd", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
-            Text("MarketCap = " +
-                '${NumberFormat("#,###.####").format(double.parse(widget.marketCap_c??'0'))}' + " " + "usd", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
-            Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
-            // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-            //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
-            // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-            //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
-            // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-            //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
-            // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
-            //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
-            Container(
-              height: 200,
-              width: 500,
-                child: CoinGraph(index: widget.index_c??'',color: widget.color_c??'')
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                    height: 200,width: 400,
+                    child: CoinGraph(index: widget.index_c??'',color: widget.color_c??'')
+                ),
+                Text("Volume = " +
+                    '${NumberFormat("#,###.####").format(double.parse(widget.volume_c??'0'))}' + " " + "หน่วย", style: TextStyle(
+                    fontSize: 25,fontWeight: FontWeight.bold,color: HexColor(text_color))),
+                Text("Price = " +
+                  '${NumberFormat("#,###.######").format(double.parse(widget.price_c??'0'))}' + " " + "usd", style: TextStyle(
+                    fontSize: 25,fontWeight: FontWeight.bold,color: HexColor(text_color))),
+                Text("MarketCap = " +
+                    '${NumberFormat("#,###.####").format(double.parse(widget.marketCap_c??'0'))}' + " " + "usd", style: TextStyle(
+                    fontSize: 25,fontWeight: FontWeight.bold,color: HexColor(text_color))),
+                Text("Rank = ${widget.rank_c??''}", style: TextStyle(
+                    fontSize: 25,fontWeight: FontWeight.bold,color: HexColor(text_color))),
+                // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
+                //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
+                // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
+                //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
+                // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
+                //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
+                // Text("Rank = ${widget.rank_c??''}", style: TextStyle(
+                //     fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black)),
+              ],
             ),
           ],
         ),

@@ -56,8 +56,9 @@ class _CoinGraphStfState extends State<CoinGraphStf> {
       color_gg = '#949494';
     }
     return Scaffold(
-
-      body: FutureBuilder(
+      backgroundColor : HexColor(color_gg),
+      body:
+      FutureBuilder(
         future: getCoinRankForGraph(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
