@@ -65,6 +65,7 @@ class _MainBodySTFState extends State<MainBodySTF> {
     // {
     //   return Text(snapshot.hasData ? '${snapshot.data}' : '');
     // });
+    double devicewitdh = MediaQuery.of(context).size.width;
     return FutureBuilder(
 
       future: getCoinRank(),
@@ -103,7 +104,7 @@ class _MainBodySTFState extends State<MainBodySTF> {
                               double.parse('${result.data.coins[index].price}'),
                               "${result.data.coins[index].iconUrl}",
                               Colors.white,
-                              100),
+                              devicewitdh*0.3),
                         ),
                       ],
                     )

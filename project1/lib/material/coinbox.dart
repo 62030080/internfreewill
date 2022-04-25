@@ -14,6 +14,7 @@ class CoinBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double devicewidth = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.all(10.0),
       decoration:
@@ -29,14 +30,14 @@ class CoinBox extends StatelessWidget {
               Text(
                 cname,
                 style: TextStyle(
-                    fontSize: 30,
+                    fontSize: devicewidth*0.1,
                     color: Colors.black87,
                     fontWeight: FontWeight.bold),
               ),
               Text(
                 '${NumberFormat("#,###.#####").format(cprice)} USD',
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: devicewidth*0.05,
                     color: Colors.blueGrey,
                     fontWeight: FontWeight.bold),
               ),
@@ -45,8 +46,8 @@ class CoinBox extends StatelessWidget {
           ),
 
           SizedBox(
-              width: 100,
-              height: 100,
+              width: devicewidth*0.3,
+              height: devicewidth*0.3,
               child: CheckImg(
                 aimg: cimage,
                 symcheck: symbol_cb,

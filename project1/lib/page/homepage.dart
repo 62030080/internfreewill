@@ -32,9 +32,14 @@ class _Home_PageState extends State<Home_Page> {
   @override
   Widget build(BuildContext context) {
     print("เรียกใช้ build");
+    double devicewidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Coin", style: TextStyle(fontSize: 30.0),),
+      appBar: 
+      PreferredSize(
+        preferredSize: Size.fromHeight(devicewidth*0.1),
+        child: AppBar(
+          title: Text("Coin", style: TextStyle(fontSize: devicewidth*0.06),),
+        ),
       ),
       // body: MainBodyStl(),
       body: _changeScreen[_selectedIndex],
