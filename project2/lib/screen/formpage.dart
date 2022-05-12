@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class FormPage extends StatelessWidget {
+  const FormPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,8 +10,23 @@ class RegisterPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Register'),
       ),
-      body: Center(
-        child: Text('Register'),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Form(
+          child: Column(
+                children: [
+                  TextFormField(decoration: new InputDecoration(labelText: "ชื่อรายการ"),
+                  autofocus: true,),
+                  TextFormField(decoration: new InputDecoration(labelText: "จำนวนเงิน"),
+                  keyboardType: TextInputType.number,),
+                  TextButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, child: Text('Submit'),),
+
+
+                  ],
+        ),
+    ),
       ),
     );
   }
